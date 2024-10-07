@@ -18,6 +18,8 @@ export class MazeSolverDijkstra extends MazeSolver {
     costMap.set(`${start.x},${start.y}`, 0);
 
     while (queue.length > 0) {
+      this.incrementStep();
+
       // Sort queue by the cost to simulate priority queue behavior
       queue.sort((a, b) => a.cost - b.cost);
       const { coord, path, cost } = queue.shift()!;
@@ -27,7 +29,7 @@ export class MazeSolverDijkstra extends MazeSolver {
       }
 
       // Print the current state of the maze
-      this.maze.printBoard(coord, visited, path);
+      this.maze.printBoard(coord, visited, path, this.getStep());
 
       for (const direction of directions) {
         const nextCoord: Coordinate = {

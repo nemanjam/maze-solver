@@ -10,7 +10,6 @@ export class Maze implements IMaze {
   private readonly cols: number;
 
   private enableDebugging: boolean;
-  private step = 0;
 
   private constructor(
     board: number[][],
@@ -80,7 +79,8 @@ export class Maze implements IMaze {
   public printBoard(
     current: Coordinate,
     visited: Set<string>,
-    currentPath: Coordinate[]
+    currentPath: Coordinate[],
+    step: number
   ): void {
     if (!this.enableDebugging) {
       return;
@@ -110,7 +110,7 @@ export class Maze implements IMaze {
       }
     }
 
-    const output = `Step ${++this.step}:\n${displayBoard
+    const output = `Step ${step}:\n${displayBoard
       .map((row) => row.join(' '))
       .join('\n')}\n`;
     console.log(output);

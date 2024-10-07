@@ -2,6 +2,13 @@ import { Coordinate } from './maze';
 
 export interface IMazeSolver {
   solve(): string;
+  printResult(): PrintResult;
+}
+export interface PrintResult {
+  path: string;
+  name: string;
+  step: number;
+  formattedResult: string;
 }
 
 export interface Direction {

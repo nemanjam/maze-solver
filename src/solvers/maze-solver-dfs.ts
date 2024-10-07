@@ -13,6 +13,8 @@ export class MazeSolverDFS extends MazeSolver {
     visited.add(`${start.x},${start.y}`);
 
     while (stack.length > 0) {
+      this.incrementStep();
+
       const { coord, path } = stack.pop()!;
 
       if (this.maze.isEnd(coord)) {
@@ -20,7 +22,7 @@ export class MazeSolverDFS extends MazeSolver {
       }
 
       // Print the current state of the maze
-      this.maze.printBoard(coord, visited, path);
+      this.maze.printBoard(coord, visited, path, this.getStep());
 
       for (const direction of directions) {
         const nextCoord: Coordinate = {

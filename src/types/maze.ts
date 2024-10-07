@@ -12,7 +12,8 @@ export interface IMaze {
   printBoard: (
     current: Coordinate,
     visited: Set<string>,
-    currentPath: Coordinate[]
+    currentPath: Coordinate[],
+    steps: number
   ) => void;
 
   getStart: () => Coordinate;

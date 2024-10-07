@@ -24,6 +24,8 @@ export class MazeSolverAStar extends MazeSolver {
     costMap.set(`${start.x},${start.y}`, 0);
 
     while (openSet.length > 0) {
+      this.incrementStep();
+
       // Sort by total cost (actual cost + heuristic)
       openSet.sort(
         (a, b) =>
@@ -38,7 +40,7 @@ export class MazeSolverAStar extends MazeSolver {
       }
 
       // Print the current state of the maze
-      this.maze.printBoard(coord, visited, path);
+      this.maze.printBoard(coord, visited, path, this.getStep());
 
       for (const direction of directions) {
         const nextCoord: Coordinate = {

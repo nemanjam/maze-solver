@@ -7,6 +7,8 @@ import { Coordinate, IMaze } from './types/maze';
 import { loadMazeFromFile } from './utils/file-loader';
 import { MazeSolverDFS } from './solvers/maze-solver-dfs';
 import { MazeSolverDijkstra } from './solvers/maze-solver-dijkstra';
+import { MazeSolverAStar } from './solvers/maze-solver-a-star';
+import { IMazeSolver } from './types/solver';
 
 // let message: string = greet();
 // console.log(message);
@@ -26,9 +28,17 @@ const maze: IMaze = Maze.create(testMaze, start, end, true);
 const filePath = path.join(__dirname, '../tests/fixtures/maze-big.txt');
 const maze1: IMaze = loadMazeFromFile(filePath);
 
-const solver1 = new MazeSolverBFS(maze1);
-const solver2 = new MazeSolverDFS(maze1);
-const solver3 = new MazeSolverDijkstra(maze1);
+const solver1: IMazeSolver = new MazeSolverBFS(maze1);
+const solver2: IMazeSolver = new MazeSolverDFS(maze1);
+const solver3: IMazeSolver = new MazeSolverDijkstra(maze1);
+const solver4: IMazeSolver = new MazeSolverAStar(maze1);
 
-const foundPath = solver3.solve();
-console.log(`Found path:\n${foundPath}`);
+const result1 = solver1.printResult();
+const result2 = solver2.printResult();
+const result3 = solver3.printResult();
+const result4 = solver4.printResult();
+
+console.log(result1.formattedResult);
+console.log(result2.formattedResult);
+console.log(result3.formattedResult);
+console.log(result4.formattedResult);
