@@ -1,7 +1,6 @@
-// maze.ts
-import { Coordinate } from './types';
+import { Coordinate, IMaze } from './types/maze';
 
-export class Maze {
+export class Maze implements IMaze {
   private board: number[][];
   private start: Coordinate;
   private end: Coordinate;

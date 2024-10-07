@@ -1,10 +1,10 @@
-import { Coordinate } from './types';
-import { Maze } from './maze';
+import { Coordinate, IMaze } from '../types/maze';
+import { IMazeSolver } from '../types/solver';
 
-export abstract class MazeSolver {
-  protected maze: Maze;
+export abstract class MazeSolver implements IMazeSolver {
+  protected maze: IMaze;
 
-  constructor(maze: Maze) {
+  constructor(maze: IMaze) {
     this.maze = maze;
   }
 

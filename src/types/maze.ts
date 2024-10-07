@@ -3,8 +3,12 @@ export interface Coordinate {
   readonly y: number;
 }
 
-export interface Maze {
-  board: number[][];
-  start: Coordinate;
-  end: Coordinate;
+export interface IMaze {
+  isWithinBounds: (coord: Coordinate) => boolean;
+  isWalkable: (coord: Coordinate) => boolean;
+  isEnd: (coord: Coordinate) => boolean;
+  formatPath: (path: ReadonlyArray<Coordinate>) => string;
+
+  getStart: () => Coordinate;
+  getEnd: () => Coordinate;
 }

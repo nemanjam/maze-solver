@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { loadMazeFromFile } from '../src/file-loader';
+import { loadMazeFromFile } from '../src/utils/file-loader';
 import { Maze } from '../src/maze';
 
 jest.mock('fs');

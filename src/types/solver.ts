@@ -1,6 +1,6 @@
 import { Coordinate } from './maze';
 
-export interface MazeSolver {
+export interface IMazeSolver {
   solve(): string;
 }
 
@@ -9,7 +9,10 @@ export interface Direction {
   y: number;
 }
 
-export interface BFSQueueElement {
+export interface QueueElement {
   coord: Coordinate;
   path: Coordinate[];
 }
+export interface BFSQueueElement extends QueueElement {}
+
+export interface DFSStackElement extends QueueElement {}

@@ -1,5 +1,5 @@
 import { Maze } from '../src/maze';
-import { Coordinate } from '../src/types';
+import { Coordinate } from '../src/types/maze';
 
 describe('Maze', () => {
   const board: number[][] = [

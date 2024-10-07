@@ -1,14 +1,15 @@
 {
-  "name": "hello-node",
+  "name": "maze-solver",
   "version": "1.0.0",
-  "description": "Hello world application in NodeJS and Typescript",
+  "description": "Test path finding algorithms.",
   "main": "./src/main.ts",
   "scripts": {
     "dev": "ts-node ./src/main.ts",
     "build": "tsc",
     "test": "jest --maxWorkers=1",
     "coverage": "jest --maxWorkers=1 --coverage",
-    "watch": "jest --maxWorkers=1 --coverage --watch"
+    "watch": "jest --maxWorkers=1 --coverage --watch",
+    "types": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",

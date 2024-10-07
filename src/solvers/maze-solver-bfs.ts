@@ -1,21 +1,14 @@
-import { Coordinate } from './types';
+import { Coordinate } from '../types/maze';
+import { BFSQueueElement } from '../types/solver';
+import { directions } from '../utils/constants';
 import { MazeSolver } from './maze-solver';
 
 export class MazeSolverBFS extends MazeSolver {
   protected findPath(): null | Coordinate[] {
-    const start = this.maze['start'];
-    const end = this.maze['end'];
+    const start = this.maze.getStart();
+    const end = this.maze.getEnd();
 
-    const directions = [
-      { x: 0, y: 1 }, // right
-      { x: 1, y: 0 }, // down
-      { x: 0, y: -1 }, // left
-      { x: -1, y: 0 }, // up
-    ];
-
-    const queue: { coord: Coordinate; path: Coordinate[] }[] = [
-      { coord: start, path: [start] },
-    ];
+    const queue: BFSQueueElement[] = [{ coord: start, path: [start] }];
 
     const visited = new Set<string>();
     visited.add(`${start.x},${start.y}`);

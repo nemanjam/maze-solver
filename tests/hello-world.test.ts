@@ -1,4 +1,4 @@
-import { greet } from '../src/hello-world';
+import { greet } from '../src/utils/hello-world';
 
 describe('test greet function', () => {
   it('should return `Hello World!`', () => {
