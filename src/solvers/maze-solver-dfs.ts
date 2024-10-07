@@ -4,9 +4,8 @@ import { directions } from '../utils/constants';
 import { MazeSolver } from './maze-solver';
 
 export class MazeSolverDFS extends MazeSolver {
-  protected findPath(): null | Coordinate[] {
+  protected findPath(): Coordinate[] | null {
     const start = this.maze.getStart();
-    const end = this.maze.getEnd();
 
     const stack: DFSStackElement[] = [{ coord: start, path: [start] }];
 
@@ -19,6 +18,9 @@ export class MazeSolverDFS extends MazeSolver {
       if (this.maze.isEnd(coord)) {
         return path;
       }
+
+      // Print the current state of the maze
+      this.maze.printBoard(coord, visited, path);
 
       for (const direction of directions) {
         const nextCoord: Coordinate = {

@@ -3,6 +3,7 @@ import { Maze } from '../src/maze';
 import { IMaze } from '../src/types/maze';
 import { MazeSolverDFS } from '../src/solvers/maze-solver-dfs';
 import { IMazeSolver } from '../src/types/solver';
+import { cells } from '../src/utils/colors';
 
 describe('MazeSolverDFS', () => {
   it('should solve an easy maze', () => {
@@ -20,8 +21,7 @@ describe('MazeSolverDFS', () => {
     const solver: IMazeSolver = new MazeSolverDFS(maze);
     const solution = solver.solve();
 
-    expect(solution).toContain('P'); // Ensure that solution path exists
-    console.log(solution); // Log solution to visually inspect the path
+    expect(solution).toContain(cells.path); // Ensure that solution path exists
   });
 
   it('should return "No path found" for unsolvable maze', () => {

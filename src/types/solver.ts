@@ -16,3 +16,7 @@ export interface QueueElement {
 export interface BFSQueueElement extends QueueElement {}
 
 export interface DFSStackElement extends QueueElement {}
+
+export interface DijkstraQueueElement extends QueueElement {
+  cost: number;
+}

@@ -1,10 +1,9 @@
 import { Maze } from '../src/maze';
-import { MazeSolverBFS } from '../src/solvers/maze-solver-bfs';
+import { MazeSolverDijkstra } from '../src/solvers/maze-solver-dijkstra';
 import { Coordinate } from '../src/types/maze';
 import { IMazeSolver } from '../src/types/solver';
-import { cells } from '../src/utils/colors';
 
-describe('MazeSolverBFS', () => {
+describe('MazeSolverDijkstra', () => {
   const board: number[][] = [
     [0, 1, 0],
     [0, 1, 0],
@@ -16,12 +15,9 @@ describe('MazeSolverBFS', () => {
 
   it('should solve the maze and find a valid path', () => {
     const maze = Maze.create(board, start, end);
-    const solver: IMazeSolver = new MazeSolverBFS(maze);
+    const solver: IMazeSolver = new MazeSolverDijkstra(maze);
     const result = solver.solve();
-
-    const expectedPath = `${cells.path} 1 0\n${cells.path} 1 0\n${cells.path} ${cells.path} ${cells.path}`;
-
-    expect(result).toBe(expectedPath);
+    expect(result).toBe('P # .\nP # .\nP P P');
   });
 
   it('should return "No path found" when no path exists', () => {
@@ -31,14 +27,14 @@ describe('MazeSolverBFS', () => {
       [0, 1, 0],
     ];
     const maze = Maze.create(noPathBoard, start, end);
-    const solver: IMazeSolver = new MazeSolverBFS(maze);
+    const solver: IMazeSolver = new MazeSolverDijkstra(maze);
     const result = solver.solve();
     expect(result).toBe('No path found');
   });
 
-  it('should find the shortest path using BFS', () => {
+  it("should find the shortest path using Dijkstra's algorithm", () => {
     const maze = Maze.create(board, start, end);
-    const solver: IMazeSolver = new MazeSolverBFS(maze);
+    const solver: IMazeSolver = new MazeSolverDijkstra(maze);
     const path = solver['findPath'](); // Access the private method for testing purposes.
     expect(path).toEqual([
       { x: 0, y: 0 },

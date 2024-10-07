@@ -8,7 +8,7 @@ export abstract class MazeSolver implements IMazeSolver {
     this.maze = maze;
   }
 
-  protected abstract findPath(): null | Coordinate[];
+  protected abstract findPath(): Coordinate[] | null;
 
   public solve(): string {
     const path = this.findPath();

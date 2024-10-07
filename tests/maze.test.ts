@@ -1,5 +1,6 @@
 import { Maze } from '../src/maze';
 import { Coordinate } from '../src/types/maze';
+import { cells } from '../src/utils/colors';
 
 describe('Maze', () => {
   const board: number[][] = [
@@ -46,6 +47,8 @@ describe('Maze', () => {
       { x: 2, y: 2 },
     ];
     const formatted = maze.formatPath(path);
-    expect(formatted).toBe('P # .\nP P P\n# # P');
+    const expectedPath = `${cells.path} 1 0\n${cells.path} ${cells.path} ${cells.path}\n1 1 ${cells.path}`;
+
+    expect(formatted).toBe(expectedPath);
   });
 });
