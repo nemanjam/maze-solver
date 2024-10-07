@@ -7,10 +7,7 @@ import { Coordinate, IMaze } from '../types/maze';
  * @param filePath The path to the maze file.
  * @returns A Maze object created from the file data.
  */
-export function loadMazeFromFile(
-  filePath: string,
-  enableDebugging = true
-): IMaze {
+export function loadMazeFromFile(filePath: string): IMaze {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
 
   const lines = fileContent.split('\n').filter((line) => line.trim() !== '');
@@ -38,5 +35,5 @@ export function loadMazeFromFile(
     throw new Error('Start or End coordinates are missing in the file.');
   }
 
-  return Maze.create(board, start, end, enableDebugging);
+  return Maze.create(board, start, end);
 }

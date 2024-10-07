@@ -9,30 +9,17 @@ export class Maze implements IMaze {
   private readonly rows: number;
   private readonly cols: number;
 
-  private enableDebugging: boolean;
-
-  private constructor(
-    board: number[][],
-    start: Coordinate,
-    end: Coordinate,
-    enableDebugging: boolean
-  ) {
+  private constructor(board: number[][], start: Coordinate, end: Coordinate) {
     this.board = board;
     this.start = start;
     this.end = end;
     this.rows = board.length;
     this.cols = board[0].length;
-    this.enableDebugging = enableDebugging;
   }
 
   // Factory method to create a new maze
-  static create(
-    board: number[][],
-    start: Coordinate,
-    end: Coordinate,
-    enableDebugging = false
-  ): Maze {
-    return new Maze(board, start, end, enableDebugging);
+  static create(board: number[][], start: Coordinate, end: Coordinate): Maze {
+    return new Maze(board, start, end);
   }
 
   // Check if a coordinate is within the maze bounds
@@ -76,44 +63,8 @@ export class Maze implements IMaze {
     return output;
   }
 
-  public printBoard(
-    current: Coordinate,
-    visited: Set<string>,
-    currentPath: Coordinate[],
-    step: number
-  ): void {
-    if (!this.enableDebugging) {
-      return;
-    }
-
-    // Create a copy of the board to modify for display
-    const displayBoard: string[][] = this.board.map((row) => [
-      ...row.map((cell) => String(cell)),
-    ]);
-
-    displayBoard[current.x][current.y] = cells.current;
-
-    for (const coord of currentPath) {
-      if (displayBoard[coord.x][coord.y] !== cells.current) {
-        displayBoard[coord.x][coord.y] = cells.path;
-      }
-    }
-
-    // Mark visited positions with blue '0', avoiding overwriting the path or current element
-    for (const coordKey of visited) {
-      const [x, y] = coordKey.split(',').map(Number);
-      if (
-        displayBoard[x][y] !== cells.path &&
-        displayBoard[x][y] !== cells.current
-      ) {
-        displayBoard[x][y] = cells.visited;
-      }
-    }
-
-    const output = `Step ${step}:\n${displayBoard
-      .map((row) => row.join(' '))
-      .join('\n')}\n`;
-    console.log(output);
+  public getBoard(): number[][] {
+    return this.board;
   }
 
   public getStart(): Coordinate {

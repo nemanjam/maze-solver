@@ -9,13 +9,7 @@ export interface IMaze {
   isEnd: (coord: Coordinate) => boolean;
   getCost: (coord: Coordinate) => number;
   formatPath: (path: ReadonlyArray<Coordinate>) => string;
-  printBoard: (
-    current: Coordinate,
-    visited: Set<string>,
-    currentPath: Coordinate[],
-    steps: number
-  ) => void;
-
   getStart: () => Coordinate;
   getEnd: () => Coordinate;
+  getBoard(): number[][];
 }

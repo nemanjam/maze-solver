@@ -23,15 +23,17 @@ const testMaze: number[][] = [
 
 const start: Coordinate = { x: 0, y: 0 };
 const end: Coordinate = { x: 4, y: 4 };
-const maze: IMaze = Maze.create(testMaze, start, end, true);
+const maze: IMaze = Maze.create(testMaze, start, end);
 
 const filePath = path.join(__dirname, '../tests/fixtures/maze-big.txt');
 const maze1: IMaze = loadMazeFromFile(filePath);
 
-const solver1: IMazeSolver = new MazeSolverBFS(maze1);
-const solver2: IMazeSolver = new MazeSolverDFS(maze1);
-const solver3: IMazeSolver = new MazeSolverDijkstra(maze1);
-const solver4: IMazeSolver = new MazeSolverAStar(maze1);
+const enableDebugging = true;
+
+const solver1: IMazeSolver = new MazeSolverBFS(maze1, enableDebugging);
+const solver2: IMazeSolver = new MazeSolverDFS(maze1, enableDebugging);
+const solver3: IMazeSolver = new MazeSolverDijkstra(maze1, enableDebugging);
+const solver4: IMazeSolver = new MazeSolverAStar(maze1, enableDebugging);
 
 const result1 = solver1.printResult();
 const result2 = solver2.printResult();

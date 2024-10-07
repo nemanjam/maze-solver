@@ -29,7 +29,7 @@ export class MazeSolverDijkstra extends MazeSolver {
       }
 
       // Print the current state of the maze
-      this.maze.printBoard(coord, visited, path, this.getStep());
+      this.printBoard(coord, visited, path);
 
       for (const direction of directions) {
         const nextCoord: Coordinate = {
