@@ -2,6 +2,7 @@ import { Maze } from '../src/maze';
 import { MazeSolverDijkstra } from '../src/solvers/maze-solver-dijkstra';
 import { Coordinate } from '../src/types/maze';
 import { IMazeSolver } from '../src/types/solver';
+import { cells } from '../src/utils/colors';
 
 describe('MazeSolverDijkstra', () => {
   const board: number[][] = [
@@ -17,7 +18,9 @@ describe('MazeSolverDijkstra', () => {
     const maze = Maze.create(board, start, end);
     const solver: IMazeSolver = new MazeSolverDijkstra(maze);
     const result = solver.solve();
-    expect(result).toBe('P # .\nP # .\nP P P');
+
+    const expectedPath = `${cells.path} 1 0\n${cells.path} 1 0\n${cells.path} ${cells.path} ${cells.path}`;
+    expect(result).toBe(expectedPath);
   });
 
   it('should return "No path found" when no path exists', () => {

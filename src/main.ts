@@ -31,4 +31,4 @@ const solver2 = new MazeSolverDFS(maze1);
 const solver3 = new MazeSolverDijkstra(maze1);
 
 const foundPath = solver3.solve();
-console.log(foundPath);
+console.log(`Found path:\n${foundPath}`);
