@@ -2,9 +2,9 @@
   "name": "hello-node",
   "version": "1.0.0",
   "description": "Hello world application in NodeJS and Typescript",
-  "main": "./src/app.ts",
+  "main": "./src/main.ts",
   "scripts": {
-    "dev": "ts-node ./src/app.ts",
+    "dev": "ts-node ./src/main.ts",
     "build": "tsc",
     "test": "jest --maxWorkers=1",
     "coverage": "jest --maxWorkers=1 --coverage",
