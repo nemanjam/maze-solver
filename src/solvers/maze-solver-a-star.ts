@@ -17,6 +17,7 @@ export class MazeSolverAStar extends MazeSolver {
       { coord: start, path: [start], cost: 0 },
     ];
 
+    // Visited Set here is used just for logging. A* can revisit nodes.
     const visited = new Set<string>();
     visited.add(`${start.x},${start.y}`);
 
