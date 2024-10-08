@@ -4,6 +4,14 @@ import { Coordinate, IMaze } from '../types/maze';
 
 /**
  * Loads a maze from a file.
+ *
+ * Example maze:
+ * 0 1 0
+ * 0 0 0
+ * 1 1 0
+ * Start: 0,0
+ * End: 2,2
+ *
  * @param filePath The path to the maze file.
  * @returns A Maze object created from the file data.
  */
@@ -25,12 +33,13 @@ export function loadMazeFromFile(filePath: string): IMaze {
       const [x, y] = trimmedLine.replace('End:', '').split(',').map(Number);
       end = { x, y };
     } else {
-      // Parse maze row
+      // Parse maze row.
       const row = trimmedLine.split(' ').map(Number);
       board.push(row);
     }
   });
 
+  // Start and End are required.
   if (!start || !end) {
     throw new Error('Start or End coordinates are missing in the file.');
   }
