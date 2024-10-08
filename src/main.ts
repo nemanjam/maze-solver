@@ -23,22 +23,20 @@ const testMaze: number[][] = [
 
 const start: Coordinate = { x: 0, y: 0 };
 const end: Coordinate = { x: 4, y: 4 };
-const maze: IMaze = Maze.create(testMaze, start, end);
+const maze2: IMaze = Maze.create(testMaze, start, end);
 
 const filePath = path.join(__dirname, '../tests/fixtures/maze-big.txt');
 const maze1: IMaze = loadMazeFromFile(filePath);
 
-const enableDebugging = true;
+const solver1: IMazeSolver = new MazeSolverBFS(maze1);
+const solver2: IMazeSolver = new MazeSolverDFS(maze1);
+const solver3: IMazeSolver = new MazeSolverDijkstra(maze1);
+const solver4: IMazeSolver = new MazeSolverAStar(maze1);
 
-const solver1: IMazeSolver = new MazeSolverBFS(maze1, enableDebugging);
-const solver2: IMazeSolver = new MazeSolverDFS(maze1, enableDebugging);
-const solver3: IMazeSolver = new MazeSolverDijkstra(maze1, enableDebugging);
-const solver4: IMazeSolver = new MazeSolverAStar(maze1, enableDebugging);
-
-const result1 = solver1.printResult();
-const result2 = solver2.printResult();
-const result3 = solver3.printResult();
-const result4 = solver4.printResult();
+const result1 = solver1.formatResult();
+const result2 = solver2.formatResult();
+const result3 = solver3.formatResult();
+const result4 = solver4.formatResult();
 
 console.log(result1.formattedResult);
 console.log(result2.formattedResult);

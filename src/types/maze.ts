@@ -8,8 +8,8 @@ export interface IMaze {
   isWalkable: (coord: Coordinate) => boolean;
   isEnd: (coord: Coordinate) => boolean;
   getCost: (coord: Coordinate) => number;
-  formatPath: (path: ReadonlyArray<Coordinate>) => string;
+  getBoard(): number[][];
   getStart: () => Coordinate;
   getEnd: () => Coordinate;
-  getBoard(): number[][];
+  formatPath: (path: ReadonlyArray<Coordinate>) => string;
 }

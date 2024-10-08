@@ -1,18 +1,29 @@
 import { Coordinate, IMaze } from '../types/maze';
-import { IMazeSolver, PrintResult } from '../types/solver';
+import { IMazeSolver, FormattedResult } from '../types/solver';
 import { cells } from '../utils/colors';
+import { CONFIG } from '../config';
 
 export abstract class MazeSolver implements IMazeSolver {
   protected maze: IMaze;
   private step = 0;
   private enableDebugging: boolean;
 
-  constructor(maze: IMaze, enableDebugging = false) {
+  constructor(maze: IMaze, enableDebugging = CONFIG.enableDebugging) {
     this.maze = maze;
-    this.enableDebugging = enableDebugging;
+    // Disable debugging for tests
+    this.enableDebugging =
+      process.env.NODE_ENV === 'test' ? false : enableDebugging;
   }
 
   protected abstract findPath(): Coordinate[] | null;
+
+  protected incrementStep(): void {
+    this.step++;
+  }
+
+  private resetStep(): void {
+    this.step = 0;
+  }
 
   public solve(): string {
     this.resetStep();
@@ -24,7 +35,7 @@ export abstract class MazeSolver implements IMazeSolver {
     return this.maze.formatPath(path);
   }
 
-  public printResult(): PrintResult {
+  public formatResult(): FormattedResult {
     const path = this.solve();
 
     return {
@@ -35,15 +46,7 @@ export abstract class MazeSolver implements IMazeSolver {
     };
   }
 
-  protected incrementStep(): void {
-    this.step++;
-  }
-
-  private resetStep(): void {
-    this.step = 0;
-  }
-
-  public printBoard(
+  protected printBoard(
     current: Coordinate,
     visited: Set<string>,
     currentPath: Coordinate[]

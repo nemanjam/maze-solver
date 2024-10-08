@@ -49,6 +49,18 @@ export class Maze implements IMaze {
     return 1;
   }
 
+  public getBoard(): number[][] {
+    return this.board;
+  }
+
+  public getStart(): Coordinate {
+    return this.start;
+  }
+
+  public getEnd(): Coordinate {
+    return this.end;
+  }
+
   // Format and print the maze with the solution path
   public formatPath(path: ReadonlyArray<Coordinate>): string {
     const formattedMaze = this.board.map((row, x) =>
@@ -61,17 +73,5 @@ export class Maze implements IMaze {
 
     const output = formattedMaze.map((row) => row.join(' ')).join('\n');
     return output;
-  }
-
-  public getBoard(): number[][] {
-    return this.board;
-  }
-
-  public getStart(): Coordinate {
-    return this.start;
-  }
-
-  public getEnd(): Coordinate {
-    return this.end;
   }
 }

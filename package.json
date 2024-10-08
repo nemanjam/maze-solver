@@ -7,6 +7,7 @@
     "dev": "ts-node ./src/main.ts",
     "build": "tsc",
     "test": "jest --maxWorkers=1",
+    "test-verbose": "jest --maxWorkers=1 --verbose",
     "test-single": "jest --maxWorkers=1 tests/maze-solver-bfs.test.ts",
     "coverage": "jest --maxWorkers=1 --coverage",
     "watch": "jest --maxWorkers=1 --coverage --watch",
