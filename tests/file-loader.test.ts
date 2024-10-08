@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { loadMazeFromFile } from '../src/utils/file-loader';
 import { Maze } from '../src/maze';
+import { IMaze } from '../src/types/maze';
 
 jest.mock('fs');
 
@@ -22,12 +23,12 @@ describe('loadMazeFromFile', () => {
         `;
     (fs.readFileSync as jest.Mock).mockReturnValue(mockFileContent);
 
-    const maze: Maze = loadMazeFromFile('mockMaze.txt');
+    const maze: IMaze = loadMazeFromFile('mockMaze.txt');
 
     expect(maze).toBeInstanceOf(Maze);
-    expect(maze['start']).toEqual({ x: 0, y: 0 });
-    expect(maze['end']).toEqual({ x: 4, y: 4 });
-    expect(maze['board']).toEqual([
+    expect(maze.getStart()).toEqual({ x: 0, y: 0 });
+    expect(maze.getEnd()).toEqual({ x: 4, y: 4 });
+    expect(maze.getBoard()).toEqual([
       [0, 1, 0, 0, 0],
       [0, 1, 0, 1, 0],
       [0, 0, 0, 1, 0],
