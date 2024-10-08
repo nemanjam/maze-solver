@@ -2,7 +2,7 @@ import { Coordinate } from './maze';
 
 export interface IMazeSolver {
   solve(): string;
-  formatResult(): FormattedResult;
+  solveAndFormat(): FormattedResult;
 }
 export interface FormattedResult {
   path: string;

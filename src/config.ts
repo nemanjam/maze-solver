@@ -1,3 +1,3 @@
 export const CONFIG = {
-  enableDebugging: true,
+  enableLogging: true,
 } as const;
