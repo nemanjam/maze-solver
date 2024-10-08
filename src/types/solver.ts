@@ -33,7 +33,7 @@ export interface QueueElement {
 /** BFS queue. FIFO. */
 export interface BFSQueueElement extends QueueElement {}
 
-/** DFS queue. LIFO. */
+/** DFS stack. LIFO. */
 export interface DFSStackElement extends QueueElement {}
 
 /** Dijkstra and A* priority Queue with cost. */
