@@ -25,7 +25,9 @@ export class MazeSolverDijkstra extends MazeSolver {
       // Sort queue by the cost to simulate priority queue behavior.
       queue.sort((a, b) => a.cost - b.cost);
 
-      // For weights (cost) 1 and Infinity completely equivalent to BFS.
+      // For weights (cost) 1 and Infinity (constant weights) completely equivalent to BFS.
+      // Priority queue sorted by lowest cost ensures that the top element
+      // for the currently cheapest path will be used for the next test.
       const { coord, path, cost } = queue.shift()!;
 
       if (this.maze.isEnd(coord)) {
@@ -42,15 +44,18 @@ export class MazeSolverDijkstra extends MazeSolver {
         };
 
         const coordKey = `${nextCoord.x},${nextCoord.y}`;
+        // Add history and current cost. Guaranteed to find path with the lowest cost.
+        // Can handle weighted graphs.
         const nextCost = cost + this.maze.getCost(nextCoord);
 
         if (
           this.maze.isWithinBounds(nextCoord) &&
           this.maze.isWalkable(nextCoord) &&
           // First time visited or within this path the cost is lower than the cost from some previous path.
+          // The second condition handles multiple paths to the same node. So it can choose the cheapest path.
           (!costMap.has(coordKey) || nextCost < costMap.get(coordKey)!)
         ) {
-          visited.add(coordKey);
+          visited.add(coordKey); // Only for logging.
           costMap.set(coordKey, nextCost);
           queue.push({
             coord: nextCoord,
