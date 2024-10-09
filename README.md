@@ -1,5 +1,7 @@
 # Maze solver
 
+Maze solvers implemented using BFS, DFS, Dijkstra, A\* with Jest unit tests and code coverage. Input maze can be defined in code or in a file in `tests/fixtures`. Use `src/config.ts` to enable or disable additional logging for printing maze and current path at each step of the search.
+
 ## Requirements
 
 - Maze representation and path finding
@@ -13,8 +15,9 @@
 # install dependencies
 yarn install
 
-# run in dev mode
 # enable or disable logging in src/config.ts
+
+# run in dev mode
 yarn dev
 
 # logging is disabled for tests by default
