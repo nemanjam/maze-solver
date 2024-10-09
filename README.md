@@ -116,6 +116,8 @@ While using the Strategy pattern to encapsulate each algorithm as a separate str
 
 ## Algorithms
 
+Paths in a maze form a tree structure or a graph if a maze has cycles. Thats why tree and graph traversal algorithms can be used for finding paths and the shortest path in a maze.
+
 ## References
 
 - Starter project, Typescript, Jest https://github.com/julianmateu/hello-ts
