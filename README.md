@@ -1,5 +1,12 @@
 # Maze solver
 
+## Requirements
+
+- Maze representation and path finding
+- Implement multiple solvers
+- Automated tests
+- Read mazes from input files
+
 ## Installation and running
 
 ```bash
@@ -49,3 +56,15 @@ Defined in `src/utils/colors.ts`.
 ### Coverage
 
 ![Coverage](./screenshots/yarn-coverage.png)
+
+## Architecture
+
+## Algorithms
+
+## References
+
+- Starter project, Typescript, Jest https://github.com/julianmateu/hello-ts
+- Some visualized algorithms behavior https://www.youtube.com/watch?v=GC-nBgi9r0U
+- BFS vs DFS, basic overview and implementation https://www.geeksforgeeks.org/difference-between-bfs-and-dfs/
+- BFS vs Dijkstra similarities https://stackoverflow.com/a/52676408/4383275
+- Visual playgrounds https://visualmazesolver.vercel.app/, http://qiao.github.io/PathFinding.js/visual/
