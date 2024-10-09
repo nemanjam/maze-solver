@@ -1,6 +1,6 @@
 # Maze solver
 
-Maze solver implemented using BFS, DFS, Dijkstra, A\* algorithms with Jest unit tests and code coverage. Input maze can be defined in code or in a file in `tests/fixtures`. Use `src/config.ts` to enable or disable additional logging for printing maze and current path at each step of the search.
+Maze solver implemented using BFS, DFS, Dijkstra, A\* algorithms with Jest unit tests and code coverage. Input maze can be defined in code or in a file in `tests/fixtures`. Use `src/config.ts` to enable or disable additional logging for printing maze and current path at each step of the search. The code is well commented.
 
 ## Requirements
 
@@ -37,11 +37,11 @@ yarn coverage
 
 ### Development
 
-![Development](./screenshots/yarn-dev.png)
+![Development](./docs/screenshots/yarn-dev.png)
 
 ### Development with logging enabled
 
-![Development with logging enabled](./screenshots/yarn-dev-enable-logging.png)
+![Development with logging enabled](./docs/screenshots/yarn-dev-enable-logging.png)
 
 #### Logging legend
 
@@ -51,15 +51,15 @@ Defined in `src/utils/colors.ts`.
 - magenta `+` - current cell
 - blue `0` - visited cell
 
-![Logging legend](./screenshots/logging-legend.png)
+![Logging legend](./docs/screenshots/logging-legend.png)
 
 ### Test verbose
 
-![Test verbose](./screenshots/yarn-test-verbose.png)
+![Test verbose](./docs/screenshots/yarn-test-verbose.png)
 
 ### Coverage
 
-![Coverage](./screenshots/yarn-coverage.png)
+![Coverage](./docs/screenshots/yarn-coverage.png)
 
 ## Architecture
 
@@ -106,9 +106,13 @@ export class Maze implements IMaze {
 const _maze2: IMaze = Maze.create(testMaze, start, end);
 ```
 
+### Class diagram
+
+![Class diagram](./docs/diagrams/maze-solver-class-diagram.drawio.png)
+
 ### Note
 
-While using the Strategy pattern to encapsulate each algorithm as a separate strategy that can be dynamically assigned to a solver would make sense, I decided it would be overkill for this relatively simple use case. It would bloat the tests and make the project less practical to review and present.
+While using the Strategy pattern to encapsulate each algorithm as a separate strategy that can be dynamically instantiated and assigned to a solver would make sense, I decided it would be overkill for this relatively simple use case. It would bloat the tests and make the project less practical to review and present.
 
 ## Algorithms
 
