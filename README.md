@@ -8,6 +8,7 @@ Maze solver implemented using BFS, DFS, Dijkstra, A\* algorithms with Jest unit 
 - Implement multiple solvers
 - Automated tests
 - Read mazes from input files
+- Document the process and comment the code
 
 ## Installation and running
 
@@ -61,6 +62,53 @@ Defined in `src/utils/colors.ts`.
 ![Coverage](./screenshots/yarn-coverage.png)
 
 ## Architecture
+
+Project uses polymorphism and simplified Factory pattern. `MazeSolver` is an abstract class that declares `findPath()` method that is implemented in each derived concrete solver class.
+
+```ts
+export abstract class MazeSolver implements IMazeSolver {
+  protected maze: IMaze;
+
+  protected abstract findPath(): Coordinate[] | null;
+
+  // ...
+}
+```
+
+It uses coding towards interface, separating interfaces from implementations by exposing only the public class methods through the interfaces.
+
+```ts
+// Maze interface
+export interface IMaze {
+  getBoard(): number[][];
+
+  getStart: () => Coordinate;
+
+  formatPath: (path: ReadonlyArray<Coordinate>) => string;
+
+  // ...
+
+}
+
+// Maze implementation
+export class Maze implements IMaze {
+
+  public getBoard(): number[][] { ... }
+
+  public getStart(): Coordinate { ... }
+
+  public formatPath(path: ReadonlyArray<Coordinate>): string { ... }
+
+  // ...
+}
+
+// usage
+const _maze2: IMaze = Maze.create(testMaze, start, end);
+```
+
+### Note
+
+While using the Strategy pattern to encapsulate each algorithm as a separate strategy that can be dynamically assigned to a solver would make sense, I decided it would be overkill for this relatively simple use case. It would bloat the tests and make the project less practical to review and present.
 
 ## Algorithms
 
