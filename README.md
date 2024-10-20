@@ -136,10 +136,10 @@ This is the array of coordinates that represents possible directions for a movem
 
 ```ts
 export const directions: Direction[] = [
-  { x: 0, y: 1 }, // right
-  { x: 1, y: 0 }, // down
-  { x: 0, y: -1 }, // left
-  { x: -1, y: 0 }, // up
+  { x: 0, y: 1 }, // up
+  { x: 1, y: 0 }, // right
+  { x: 0, y: -1 }, // down
+  { x: -1, y: 0 }, // left
 ];
 ```
 
@@ -149,7 +149,7 @@ Since BFS uses a queue, it will respect this structure and attempt to change dir
 
 #### DFS
 
-In contrast, DFS will also respect initial order in the directions array but prioritizes the upper elements, so in the example above it will always attempt to apply `right` direction first before exploring other directions. Without obstacles and boundaries this will cause the algorithm to inspect the distant nodes in a straight line. DFS can be efficient to find distant end node efficiently but also can be very inefficient to find close node if it happens to be in the different direction.
+In contrast, DFS will also respect initial order in the directions array but prioritizes the upper elements, so in the example above it will always attempt to apply `up` direction first before exploring other directions. Without obstacles and boundaries this will cause the algorithm to inspect the distant nodes in a straight line. DFS can be efficient to find distant end node efficiently but also can be very inefficient to find close node if it happens to be in the different direction.
 
 #### Weighted vs unweighted
 
