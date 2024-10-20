@@ -31,7 +31,7 @@ export class MazeSolverBFS extends MazeSolver {
        *
        * Example for top, right, down, left.
        *   6
-       * 7 2 8
+       * 8 2 7
        * 5 1 3 9
        *   4
        *
